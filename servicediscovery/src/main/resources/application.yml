@@ -9,3 +9,5 @@ eureka:
   client:
     register-with-eureka: false #자기자신을 등록하는지 확인
     fetch-registry: false
+  server:
+    enable-self-preservation: false
