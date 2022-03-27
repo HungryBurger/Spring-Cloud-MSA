@@ -1,9 +1,30 @@
 server:
-  port: 0
+  port: 5000
 
 spring:
   application:
     name: user-service
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+      path: /h2-console
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:~/userdb
+    username: sa
+    password:
+  jpa :
+    hibernate :
+      ddl-auto : create
+    properties :
+      hibernate :
+        show_sql: true
+        format_sql : true
+    database-platform:
+
+
 eureka:
   instance:
     instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.value}}
@@ -16,3 +37,5 @@ eureka:
       lease-renewal-interval-in-seconds: 1 # 디스커버리한테 1초마다 하트비트 전송  (기본 30초)
       lease-expiration-duration-in-seconds: 2 # 디스커버리는 서비스 등록 해제 하기 전에 마지막 하트비트에서부터 2초 기다림
 
+greeting:
+  message : Welcome to the Simple E-commerce.
